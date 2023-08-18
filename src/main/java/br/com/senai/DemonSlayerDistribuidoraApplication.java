@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjetoComThymeleafApplication {
+public class DemonSlayerDistribuidoraApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProjetoComThymeleafApplication.class, args);
+		SpringApplication.run(DemonSlayerDistribuidoraApplication.class, args);
 	}
 
 }

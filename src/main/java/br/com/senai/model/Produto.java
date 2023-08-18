@@ -1,13 +1,15 @@
 package br.com.senai.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.springframework.format.annotation.NumberFormat;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Produto {
@@ -24,9 +26,10 @@ public class Produto {
 	private int quantidade;
 	
 	@Min(0)
+	@NumberFormat(pattern = "##,##")
+	@Column(columnDefinition = "decimal(5,2)")
 	private double preco;
-	
-	private String descricaoProduto;
+	private String descricao;
 	private String urlImagem;
 	
 	public Long getId() {
@@ -53,16 +56,17 @@ public class Produto {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	public String getDescricaoProduto() {
-		return descricaoProduto;
-	}
-	public void setDescricaoProduto(String descricaoProduto) {
-		this.descricaoProduto = descricaoProduto;
-	}
+	
 	public String getUrlImagem() {
 		return urlImagem;
 	}
 	public void setUrlImagem(String urlImagem) {
 		this.urlImagem = urlImagem;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 }
