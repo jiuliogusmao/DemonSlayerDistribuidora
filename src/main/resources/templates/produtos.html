@@ -13,7 +13,7 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark"
+		<nav class="navbar navbar-expand-lg" style="background-color: #B63319"
 			data-bs-theme="dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/"> <img
@@ -40,67 +40,71 @@
 	</header>
 
 	<div class="container">
-		<div class="card" th:each="produto : ${produtos}"
-			style="margin: 15px 0px; height: 60%">
-			<div class="card-header" th:text="${produto.nome}"></div>
-			<div class="card-body">
-				<div class="row">
-					<div class="col">
-						<div>
-							Preço: R$<span
-								th:text="${#numbers.formatDecimal(produto.preco, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
-						</div>
-						<div>
-							Quantidade: <span th:text="${produto.quantidade}"></span>
-						</div>
-						<div>
-							Descrição:
-							<h5 th:text="${produto.descricao}"></h5>
+		<div class="row justify-content-md-center"  style=" display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;">
+			<div class="col-12 d-flex">
+				<div class="card" th:each="produto : ${produtos}"
+					style="margin: 15px 0px; width: 700px">
+					<div class="card-header" th:text="${produto.nome}"></div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col">
+								<div>
+									Preço: R$<span
+										th:text="${#numbers.formatDecimal(produto.preco, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
+								</div>
+								<div>
+									Quantidade: <span th:text="${produto.quantidade}"></span>
+								</div>
+								<div>
+									Descrição:
+									<h5 th:text="${produto.descricao}"></h5>
+								</div>
+							</div>
+							<div class="col">
+								<img alt="imagem do produto" th:src="${produto.urlImagem}"
+									src="" class="img-thumbnail">
+							</div>
 						</div>
 					</div>
-					<div class="col">
-						<img alt="imagem do produto" th:src="${produto.urlImagem}" src=""
-							class="img-thumbnail">
-
+					<div class="row">
+						<div class="col" style="margin: 0px 0px 10px 50px">
+							<a th:href="@{/editar/{id}(id=${produto.id})}"
+								class="btn btn-primary">Editar</a>
+							<button data-bs-toggle="modal" class="btn btn-danger"
+								th:attr="data-bs-target='#modalExcluir'+${produto.id}">Excluir</button>
+						</div>
 					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col" style="margin: 0px 0px 10px 50px">
-					<a th:href="@{/editar/{id}(id=${produto.id})}"
-						class="btn btn-primary">Editar</a>
-					<button data-bs-toggle="modal" class="btn btn-danger"
-						th:attr="data-bs-target='#modalExcluir'+${produto.id}">Excluir</button>
-				</div>
-			</div>
-			<div class="modal" tabindex="-1"
-				th:attr="id='modalExcluir'+${produto.id}">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">Excluir produto?</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal"
-								aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<p>
-								Deseja realmente excluir o produto: <strong><span
-									th:text="${produto.nome}"></span>?</strong>
-							</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-bs-dismiss="modal">Cancelar</button>
-							<a th:href="@{/excluir/{id}(id=${produto.id})}" type="button"
-								class="btn btn-danger">Confirmar</a>
+					<div class="modal" tabindex="-1"
+						th:attr="id='modalExcluir'+${produto.id}">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Excluir produto?</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									<p>
+										Deseja realmente excluir o produto: <strong><span
+											th:text="${produto.nome}"></span>?</strong>
+									</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-bs-dismiss="modal">Cancelar</button>
+									<a th:href="@{/excluir/{id}(id=${produto.id})}" type="button"
+										class="btn btn-danger">Confirmar</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
-
 
 
 	<script
