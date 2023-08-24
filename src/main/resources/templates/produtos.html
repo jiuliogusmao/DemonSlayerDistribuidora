@@ -11,13 +11,13 @@
 
 <title>Listagem de produtos</title>
 </head>
-<body>
+<body style="background-color: #F04717">
 	<header>
 		<nav class="navbar navbar-expand-lg" style="background-color: #B63319"
 			data-bs-theme="dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/"> <img
-					src="./imagens/demon slayer logo.png" style="width: 80px">
+					src="./imagens/demon_slayer_logo.png" style="width: 80px">
 				</a>
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -40,13 +40,11 @@
 	</header>
 
 	<div class="container">
-		<div class="row justify-content-md-center"  style=" display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;">
+		<div
+			style="width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: center;">
 			<div class="col-12 d-flex">
 				<div class="card" th:each="produto : ${produtos}"
-					style="margin: 15px 0px; width: 700px">
+					style="margin: 15px 0px; width: 700px; background-color: #2B3E3D; color: white">
 					<div class="card-header" th:text="${produto.nome}"></div>
 					<div class="card-body">
 						<div class="row">
@@ -81,18 +79,18 @@
 						th:attr="id='modalExcluir'+${produto.id}">
 						<div class="modal-dialog">
 							<div class="modal-content">
-								<div class="modal-header">
+								<div class="modal-header" style="background-color: #2B3E3D;">
 									<h5 class="modal-title">Excluir produto?</h5>
 									<button type="button" class="btn-close" data-bs-dismiss="modal"
 										aria-label="Close"></button>
 								</div>
-								<div class="modal-body">
+								<div class="modal-body" style="background-color: #2B3E3D;">
 									<p>
 										Deseja realmente excluir o produto: <strong><span
 											th:text="${produto.nome}"></span>?</strong>
 									</p>
 								</div>
-								<div class="modal-footer">
+								<div class="modal-footer" style="background-color: #2B3E3D;">
 									<button type="button" class="btn btn-secondary"
 										data-bs-dismiss="modal">Cancelar</button>
 									<a th:href="@{/excluir/{id}(id=${produto.id})}" type="button"
@@ -105,7 +103,9 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="imagem" style="display: flex; justify-content: center;">
+		<img alt="" src="./imagens/fundo.png">
+	</div>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
