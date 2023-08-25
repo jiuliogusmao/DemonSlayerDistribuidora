@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+	crossorigin="anonymous">
+
+<title>Adicionar produto</title>
+</head>
+<body style="background-color: #F04717">
+	<header>
+		<nav class="navbar navbar-expand-lg" style="background-color: #B63319"
+			data-bs-theme="dark">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/"> <img
+					src="./imagens/demon_slayer_logo.png" style="width: 80px">
+				</a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link" aria-current="page"
+							href="/">Início</a></li>
+						<li class="nav-item"><a class="nav-link" href="/produto">Listar
+								Produtos</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/cadastrarProduto">Cadastrar Produto</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+		<form action="#" th:action="@{/adicionarProduto}"
+			th:object="${produto}" class="needs-validation" method="POST"
+			style="margin: 50px auto; width: 300px; padding: 10px 20px; background-color: #2B3E3D; color: white; border-radius: 5px;">
+
+			<div class="mb-3">
+				<label class="form-label" for="nome">Nome Produto: </label> <input
+					class="form-control" type="text" id="nome" th:field="*{nome}"
+					placeholder="digite o nome do produto"> <span
+					th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label" for="descricao">Descrição do
+					Produto: </label> <input class="form-control" type="text" id="descricao"
+					th:field="*{descricao}" placeholder="digite a descrição do produto">
+				<span th:if="${#fields.hasErrors('descricao')}"
+					th:errors="*{descricao}"></span>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label" for="quantidade">Quantidade: </label> <input
+					class="form-control" type="text" id="quantidade"
+					th:field="*{quantidade}"> <span
+					th:if="${#fields.hasErrors('quantidade')}"
+					th:errors="*{quantidade}"></span>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label" for="preco">Preço: R$</label> <input
+					class="form-control" type="text" id="preco" th:field="*{preco}">
+				<span th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></span>
+			</div>
+
+			<div class="mb-3">
+				<label class="form-label" for="urlImagem">Url da Imagem </label> <input
+					class="form-control" type="text" id="urlImagem"
+					th:field="*{urlImagem}" placeholder="https://www.google.com">
+				<span th:if="${#fields.hasErrors('urlImagem')}"
+					th:errors="*{urlImagem}"></span>
+			</div>
+			<button type="submit" class="btn btn-primary">Enviar</button>
+		</form>
+	</div>
+	<div class="imagem" style="display: flex; justify-content: center;">
+		<img alt="" src="./imagens/fundo.png">
+	</div>
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous"></script>
+</body>
+</html>
